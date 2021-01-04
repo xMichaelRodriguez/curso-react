@@ -1,4 +1,4 @@
-import { heroes } from "./data/heroes";
+import { heroes } from "../data/heroes";
 
 /**
  * find recibe una callback que maneja 3 argumentos
@@ -13,12 +13,11 @@ import { heroes } from "./data/heroes";
  * en el que se busca pasandole el argumento de la callback
  * @param {Int | String} id - representa el indice del arreglo
  */
-const getHeroe = (id) => {
+export const getHeroe = (id) => {
   return heroes.find((heroe) => {
     return id === heroe.id;
   });
 };
-console.log(getHeroe(4));
 
 /**
  * Lo mismo que el find
@@ -26,10 +25,8 @@ console.log(getHeroe(4));
  * con lo que cumpla con el filtro
  * @param {String} owner -> Representa el owner del heroe
  */
-const getHeroeByOwner = (owner) => {
+export const getHeroeByOwner = (owner) => {
   return heroes.filter((heroe) => {
     return heroe.owner === owner;
   });
 };
-
-console.log(getHeroeByOwner("Marvel"));
