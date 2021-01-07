@@ -1,6 +1,8 @@
+import PropTypes from 'prop-types';
 import React, { useState } from "react";
-import propTypes from "prop-types";
-const Counter = ({ numero }) => {
+
+
+const Counter = ({ numero=10 }) => {
   //useState hook
   const [counter, setCounter] = useState(numero); //es un arreglo con un valor y una funcion
   //suma
@@ -20,6 +22,7 @@ const Counter = ({ numero }) => {
   return (
     <>
       <h1>CounterApp</h1>
+
       <h2>{counter}</h2>
 
       <button onClick={handleAdd} type="button">
@@ -35,7 +38,7 @@ const Counter = ({ numero }) => {
   );
 };
 
-Counter.prototypes = {
-  numero: propTypes.number,
+Counter.propTypes = {
+  numero: PropTypes.number,
 };
 export default Counter;

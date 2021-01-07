@@ -5,7 +5,9 @@ exports[`Pruebas en app Debe de mostrar el componente <Counter/> 1`] = `
   <h1>
     CounterApp
   </h1>
-  <h2 />
+  <h2>
+    10
+  </h2>
   <button
     onClick={[Function]}
     type="button"
