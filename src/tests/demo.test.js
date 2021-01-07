@@ -1,12 +1,12 @@
-test("debe ser true", () => {
-  //inicializacion,Arrange
-  const isActivo = true;
+describe("Pruebas en el archivo demo.test.js", () => {
+  test("deben ser iguales los strings", () => {
+    //PASO 1:inicializacion,Arrange
+    const mensaje = "hola mundo";
 
-  //actuacion act
+    //PASO 2. estimulo. actuacion act
+    const mensaje2 = `hola mundo`;
 
-  
-  //acercion acert
-  if (isActivo) {
-    throw new Error("No Esta Activo");
-  }
+    //PASO 3. Observar el comportamiento. acercion acert
+    expect(mensaje).toBe(mensaje2);
+  });
 });

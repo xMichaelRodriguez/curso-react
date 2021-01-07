@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import propTypes from "prop-types";
 const Counter = ({ numero }) => {
   //useState hook
-    const [counter, setCounter] = useState(numero); //es un arreglo con un valor y una funcion
+  const [counter, setCounter] = useState(numero); //es un arreglo con un valor y una funcion
   //suma
   const handleAdd = (e) => {
     /*   setCounter(counter + 1); */
@@ -21,11 +21,13 @@ const Counter = ({ numero }) => {
     <>
       <h1>CounterApp</h1>
       <h2>{counter}</h2>
-      {/*  <h4>{numero}</h4> */}
+
       <button onClick={handleAdd} type="button">
         Clickeame
       </button>
-      <button onClick={handleReset} type="button">Recet</button>
+      <button onClick={handleReset} type="button">
+        Recet
+      </button>
       <button onClick={handleSubtrack} type="button">
         resta
       </button>
