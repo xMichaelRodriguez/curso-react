@@ -7,15 +7,9 @@ body {
 
 input {
   color: blueviolet;
-  border: 2px solid blueviolet;
-  border-radius: 3px;
+  border: 1px solid blueviolet;
+
   font-size: 1.2rem;
   width: 100%;
 }
-input:focus {
-  color: blueviolet;
-  border: 2px solid blueviolet;
-  border-radius: 3px;
-  font-size: 1.2rem;
-  width: 100%;
-}
+
