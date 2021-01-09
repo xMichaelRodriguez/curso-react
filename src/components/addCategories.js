@@ -10,7 +10,7 @@ export const AddCategories = ({ setCategories }) => {
     e.preventDefault();
     if (inputValue.trim().length > 2) {
       setCategories((cat) => [inputValue, ...cat]);
-      setInputValue("");
+      e.target.reset()
     }
   };
 
@@ -18,12 +18,7 @@ export const AddCategories = ({ setCategories }) => {
     <form onSubmit={handleSubmit}>
       <div className="row">
         <div className="input-field col s12">
-          <input
-            id="text"
-            type="text"
-            placeholder={inputValue}
-            onChange={inputChange}
-          />
+          <input type="text"  onChange={inputChange} />
           <label forof="text">Name of gift</label>
         </div>
       </div>
