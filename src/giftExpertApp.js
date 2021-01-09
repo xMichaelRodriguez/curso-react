@@ -16,7 +16,7 @@ const GiftExpertApp = () => {
     <>
       <h2>Gift Expert App</h2>
       <AddCategories setCategories={setCategories} />
-      <hr />
+     
       <ul>
         {categories.map((item) => (
           <GiftGrid key={item} categories={item}/>
