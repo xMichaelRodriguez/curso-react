@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/index.css"],"names":[],"mappings":"AAAA,EACE,oEACF,CACA,KACE,YACF","file":"main.6da39293.chunk.css","sourcesContent":["* {\n  font-family: \"Franklin Gothic Medium\", \"Arial Narrow\", Arial, sans-serif;\n}\nbody {\n  padding: 60px;\n}\n\n"]}
