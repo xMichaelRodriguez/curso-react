@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Debe retornar el componente <GiftGridItem /> Debe mostrar el componenete correctamente 1`] = `
+<Fragment>
+  <div
+    className="card-image animate__animated animate__flipInX"
+  >
+    <img
+      alt="Hola papi"
+      height="150px"
+      src="http://localhost/algo.jpg"
+      width="150px"
+    />
+    <span
+      className="card-title"
+    >
+      Hola papi
+    </span>
+  </div>
+</Fragment>
+`;

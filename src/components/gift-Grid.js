@@ -9,12 +9,18 @@ export const GiftGrid = ({ categories }) => {
     <>
       <h3>{categories}</h3>
 
-      {loading && <p className=" animate__animated animate__flash">Loading...</p>}
+      {loading && (
+        <p className=" animate__animated animate__flash">Loading...</p>
+      )}
       <div className="container">
         <div className="row ">
-          {images.map((img) => (
-            <GiftGridItem key={img.id} {...img} />
-          ))}
+          <div className="col s12 m8 l6">
+            <div className="card m6 z-depth-3 ">
+              {images.map((img) => (
+                <GiftGridItem key={img.id} {...img} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </>
