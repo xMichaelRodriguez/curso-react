@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Debe Cargar el component <GiftGrid/> debe de mostrar items al cargar imagenes 1`] = `
+<Fragment>
+  <h3>
+    naturo
+  </h3>
+  <p
+    className=" animate__animated animate__flash"
+  >
+    Loading...
+  </p>
+  <div
+    className="container"
+  >
+    <div
+      className="row "
+    >
+      <div
+        className="col s12 m8 l6"
+      >
+        <div
+          className="card m6 z-depth-3 "
+        />
+      </div>
+    </div>
+  </div>
+</Fragment>
+`;
+
+exports[`Debe Cargar el component <GiftGrid/> el component <GiftGrid/>  1`] = `
+<Fragment>
+  <h3>
+    naturo
+  </h3>
+  <p
+    className=" animate__animated animate__flash"
+  >
+    Loading...
+  </p>
+  <div
+    className="container"
+  >
+    <div
+      className="row "
+    >
+      <div
+        className="col s12 m8 l6"
+      >
+        <div
+          className="card m6 z-depth-3 "
+        />
+      </div>
+    </div>
+  </div>
+</Fragment>
+`;

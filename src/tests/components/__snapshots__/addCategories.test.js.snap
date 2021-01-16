@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <AddCategories /> debe de mostrarse correctamente 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="row"
+  >
+    <div
+      className="input-field col s12"
+    >
+      <input
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <label
+        forof="text"
+      >
+        Name of gift
+      </label>
+    </div>
+  </div>
+</form>
+`;

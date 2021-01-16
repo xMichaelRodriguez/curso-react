@@ -1,3 +1,4 @@
+import { PropTypes } from "prop-types";
 import React from "react";
 import { GiftGridItem } from "./giftGridItem";
 import { useFetchGifts } from "./hooks/useFetchGifts";
@@ -25,4 +26,7 @@ export const GiftGrid = ({ categories }) => {
       </div>
     </>
   );
+};
+GiftGrid.propType = {
+  categories: PropTypes.string.isRequired,
 };
