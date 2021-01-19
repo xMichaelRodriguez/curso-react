@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-/* import { CounterApp } from "./components/01-useState/counterApp"; */
+// import { CounterApp } from "./components/01-useState/counterApp"; 
+// import SimpleForm from "./components/02-useEffect/SimpleForm"; 
+// import FormWithCustomHook from "./components/02-useEffect/FormWithCustomHook"; 
+// import { MultipleCustomHooks } from "./components/03-example/MultipleCustomHooks"; 
+// import { CounterWithCustomHook } from "./components/01-useState/CounterWithCustomHook"; 
+// import { HookApp } from "./hookApp";
+
+// import { FocusScreem } from "./components/04-useRef/FocusScreem"; 
+// import { RealExampleRef } from "./components/04-useRef/RealExampleRef"; 
+// import { Layout } from "./components/05-useLayoutEffact/LayoutEffect"; 
 import "./index.css";
-/* import SimpleForm from "./components/02-useEffect/SimpleForm"; */
-/* import FormWithCustomHook from "./components/02-useEffect/FormWithCustomHook"; */
-/* import { MultipleCustomHooks } from "./components/03-example/MultipleCustomHooks"; */
-/* import { CounterWithCustomHook } from "./components/01-useState/CounterWithCustomHook"; */
-/* import { HookApp } from "./hookApp";
-*/
-/* import { FocusScreem } from "./components/04-useRef/FocusScreem"; */
-import { RealExampleRef } from "./components/04-useRef/RealExampleRef";
-ReactDOM.render(<RealExampleRef />, document.getElementById("root"));
+//import { Memorize } from "./components/06-memos/memorize";
+import { MemoHook } from "./components/06-memos/Memohook";
+ReactDOM.render(<MemoHook />, document.getElementById("root"));
