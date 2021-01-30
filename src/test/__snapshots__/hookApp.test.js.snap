@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Retorna match de componente Muestra el componente HookApp 1`] = `
+<div>
+  <h3>
+    Hola mundo
+  </h3>
+</div>
+`;
