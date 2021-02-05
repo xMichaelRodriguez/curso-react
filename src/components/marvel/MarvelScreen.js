@@ -1,6 +1,12 @@
-import React from "react";
-import { HeroesList } from "../heroes/HeroesList";
+import React from 'react'
+import { HeroList } from '../heroes/HeroList'
 
 export const MarvelScreen = () => {
-  return <HeroesList publisher="Marvel Comics" />;
-};
+    return (
+        <div>
+            <h1>Marvel Screen</h1>
+            <hr />
+            <HeroList publisher="Marvel Comics" />
+        </div>
+    )
+}

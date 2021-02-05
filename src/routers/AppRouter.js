@@ -1,19 +1,25 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from 'react'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+  } from 'react-router-dom';
 
-import { LoginScreen } from "../components/login/LoginScreen";
-import { DashboarRoute } from "./DashboarRoute";
+
+import { LoginScreen } from '../components/login/LoginScreen';
+import { DashboardRoutes } from './DashboardRoutes';
+
 
 export const AppRouter = () => {
-  return (
-    <Router>
-      <div>
-        <Switch>
-          <Route exact path="/login" component={LoginScreen} />
-
-          <Route  path="/" component={DashboarRoute} />
-        </Switch>
-      </div>
-    </Router>
-  );
-};
+    return (
+        <Router>
+            <div>
+                <Switch> 
+                    <Route exact path="/login" component={ LoginScreen } />
+                    
+                    <Route path="/" component={ DashboardRoutes } />
+                </Switch>
+            </div>
+        </Router>
+    )
+}

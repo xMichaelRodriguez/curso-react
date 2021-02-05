@@ -9,7 +9,10 @@ export const HeroCard = ({
   characters,
 }) => {
   return (
-    <div className="card ms-3 shadow" style={{ maxWidth: 540 }}>
+    <div
+      className="card ms-3 shadow animate__animated animate__fadeInUp"
+      style={{ maxWidth: 540 }}
+    >
       <div className="row no-gutters">
         <div className="col-md-4">
           <img
@@ -20,18 +23,18 @@ export const HeroCard = ({
         </div>
         <div className="col-md-8">
           <div className="card-body">
-            <h5 className="card-title">{superhero}</h5>
-
-            <p className="card-text">{alter_ego}</p>
+            <h5 className="card-title"> {superhero} </h5>
+            <p className="card-text"> {alter_ego} </p>
 
             {alter_ego !== characters && (
-              <p className="card-text">{characters}</p>
+              <p className="card-text"> {characters} </p>
             )}
 
             <p className="card-text">
-              <small className="text-muted">{first_appearance}</small>
+              <small className="text-muted"> {first_appearance} </small>
             </p>
-            <Link to={`./hero/${id}`}>ver Mas...</Link>
+
+            <Link to={`./hero/${id}`}>Más...</Link>
           </div>
         </div>
       </div>
