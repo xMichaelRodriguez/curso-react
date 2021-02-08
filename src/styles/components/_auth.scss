@@ -1,0 +1,145 @@
+.auth__main {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  margin: 0px;
+  height: 100vh;
+  width: 100vw;
+}
+
+.auth__box-container {
+  background-color: #fff;
+  box-shadow: 0px 0px 7px $dark-grey;
+  border-radius: 2px;
+  padding: 30px;
+  width: 300px;
+}
+
+.auth__title {
+  color: darken($color: $primary, $amount: 20);
+  margin-bottom: 30px;
+}
+
+.auth__group {
+  position: relative;
+  margin-bottom: 35px;
+}
+.auth__input {
+  border: none;
+  border-bottom: 1px solid $dark-grey;
+  color: $dark-grey;
+  display: block;
+  font-size: 18px;
+  padding: 5px 6px 5px 5px;
+  width: 100%;
+  &:focus {
+    outline: none;
+  }
+  & ~ label {
+    color: $primary;
+    font-size: 14px;
+    top: -20px;
+  }
+
+  &:focus ~ .bar::before,
+  &:focus ~ .bar::after {
+    width: 311px;
+  }
+}
+
+.auth__social-networks {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+.auth__alert-error {
+  background-color: red;
+  border-radius: 5px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+label {
+  color: $dark-grey;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.bar {
+  display: block;
+  position: relative;
+  width: 100%;
+  &::before,
+  & ::after {
+    content: "";
+    height: 2px;
+    width: 0;
+    bottom: 0.5px;
+    position: absolute;
+    background: $primary;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+}
+
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100%;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  &:focus ~ .auth__input:focus {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+  }
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: $primary;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@-moz-keyframes inputHighlighter {
+  from {
+    background: $primary;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@keyframes inputHighlighter {
+  from {
+    background: $primary;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
