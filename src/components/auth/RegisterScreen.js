@@ -14,8 +14,8 @@ export const RegisterScreen = () => {
             placeholder="Your  First Name"
             autoComplete="false"
           />
-          <span class="highlight"></span>
-          <span class="bar"></span>
+          <span className="highlight"></span>
+          <span className="bar"></span>
           <label>First Name</label>
         </div>
         <div className="auth__group">
@@ -26,8 +26,8 @@ export const RegisterScreen = () => {
             placeholder="Your Last Name"
             autoComplete="false"
           />
-          <span class="highlight"></span>
-          <span class="bar"></span>
+          <span className="highlight"></span>
+          <span className="bar"></span>
           <label>Last Name</label>
         </div>
         <div className="auth__group">
@@ -38,8 +38,8 @@ export const RegisterScreen = () => {
             placeholder="Your Email"
             autoComplete="false"
           />
-          <span class="highlight"></span>
-          <span class="bar"></span>
+          <span className="highlight"></span>
+          <span className="bar"></span>
           <label>Email</label>
         </div>
         <div className="auth__group">
@@ -49,8 +49,8 @@ export const RegisterScreen = () => {
             name="password"
             placeholder="Your Password"
           />
-          <span class="highlight"></span>
-          <span class="bar"></span>
+          <span className="highlight"></span>
+          <span className="bar"></span>
           <label>Password</label>
         </div>
 
