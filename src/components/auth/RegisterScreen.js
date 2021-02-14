@@ -35,7 +35,7 @@ export const RegisterScreen = () => {
 
     return true;
   };
-
+  
   return (
     <>
       <h3 className="auth__title mb-5">Register</h3>
