@@ -1,43 +1,73 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import validator from "validator";
 
 import {
   startGoogleLogin,
   startLoginEmailAndPassword,
 } from "../../actions/auth";
 
+import { removeError, setError } from "../../actions/ui";
+
 import { useForm } from "../../hooks/useForm";
 
 export const LoginScreen = () => {
   const dispatch = useDispatch();
-
+  const { msgError, loading } = useSelector((state) => state.ui);
   const [formValue, handleInputChange] = useForm({
-    email: "",
-    password: "",
+    email: "scott@gmail.com",
+    password: "123456",
   });
 
   const { email, password } = formValue;
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(startLoginEmailAndPassword(email, password));
+
+    if (isFormValid()) {
+      dispatch(startLoginEmailAndPassword(email, password));
+    }
   };
 
   const handleLoginWithGoogle = () => {
     dispatch(startGoogleLogin());
   };
+
+  /**
+   * Valida las entradas
+   */
+  const isFormValid = () => {
+    if (!validator.isEmail(email)) {
+      dispatch(setError("Email is not valid"));
+
+      return false;
+    }
+
+    if (password.length < 5) {
+      dispatch(
+        setError(
+          "password should be at least 6  characters and match each other"
+        )
+      );
+
+      return false;
+    }
+    dispatch(removeError());
+    return true;
+  };
   return (
     <>
       <h3 className="auth__title">Login</h3>
       <form onSubmit={handleLogin}>
+        {msgError && <div className="auth__alert-error ">{msgError}</div>}
         <div className="auth__group">
           <input
             type="email"
             className="auth__input"
-            placeholder="Email"
+            placeholder="Your Email"
             name="email"
-            vale={email}
+            value={email}
             onChange={handleInputChange}
             autoComplete="false"
           />
@@ -50,9 +80,9 @@ export const LoginScreen = () => {
           <input
             type="Password"
             className="auth__input"
-            placeholder="password"
+            placeholder="Your Password"
             name="password"
-            vale={password}
+            value={password}
             onChange={handleInputChange}
           />
           <span className="highlight"></span>
@@ -60,7 +90,11 @@ export const LoginScreen = () => {
           <label>Password</label>
         </div>
 
-        <button type="submit" className="btn btn-primary btn-block">
+        <button
+          type="submit"
+          className="btn btn-primary btn-block"
+          disabled={loading}
+        >
           Login
         </button>
 

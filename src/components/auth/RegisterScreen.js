@@ -1,8 +1,14 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import validator from "validator";
+import { startRegisterWithEmailPasswordAndName } from "../../actions/auth";
+import { removeError, setError } from "../../actions/ui";
 import { useForm } from "../../hooks/useForm";
 export const RegisterScreen = () => {
+  const dispatch = useDispatch();
+  const { msgError } = useSelector((state) => state.ui);
+
   const [formValue, handleInputChange] = useForm({
     displayName: "michael",
     email: "scott@gmail.com",
@@ -13,34 +19,43 @@ export const RegisterScreen = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    isFormValid() && console.log("Form ok");
+    if (isFormValid()) {
+      dispatch(
+        startRegisterWithEmailPasswordAndName(email, password, displayName)
+      );
+    }
   };
 
   const isFormValid = () => {
     if (displayName.trim().length === 0) {
-      console.log("name is required");
+      dispatch(setError("name is required"));
+
       return false;
     }
     if (!validator.isEmail(email)) {
-      console.log("Email is not valid");
+      dispatch(setError("Email is not valid"));
+
       return false;
     }
 
     if (password.length < 5) {
-      console.log(
-        "password should be at least 6  characters and match each other"
+      dispatch(
+        setError(
+          "password should be at least 6  characters and match each other"
+        )
       );
+
       return false;
     }
-
+    dispatch(removeError());
     return true;
   };
-  
+
   return (
     <>
       <h3 className="auth__title mb-5">Register</h3>
       <form onSubmit={handleSubmit}>
-        <div className="auth__alert-error ">hgola</div>
+        {msgError && <div className="auth__alert-error ">{msgError}</div>}
         <div className="auth__group">
           <input
             type="text"
