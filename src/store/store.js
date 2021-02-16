@@ -3,6 +3,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 
 import { authReducers } from "../reducers/authReducer";
 import { uiReducer } from "../reducers/uiReducer";
+import { notesReducer } from "../reducers/notesReducers";
 
 const composeEnhancers =
   (typeof window !== "undefined" &&
@@ -12,6 +13,7 @@ const composeEnhancers =
 const reducers = combineReducers({
   auth: authReducers,
   ui: uiReducer,
+  notes: notesReducer,
 });
 export const store = createStore(
   reducers,

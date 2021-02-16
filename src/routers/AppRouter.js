@@ -9,6 +9,8 @@ import { JournalScren } from "../components/journal/JournalScren";
 import { AuthRouter } from "./AuthRouter";
 import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
+
+import { startNotesLoading } from "../actions/notes";
 export const AppRouter = () => {
   const [checking, setChecking] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -16,11 +18,13 @@ export const AppRouter = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    firebaseAuth.onAuthStateChanged((user) => {
+    firebaseAuth.onAuthStateChanged(async (user) => {
       //con ? pregunta si existe la clave del objeto que le doy
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName));
         setIsLoggedIn(true);
+
+        dispatch(startNotesLoading(user.uid));
       } else {
         setIsLoggedIn(false);
       }

@@ -1,23 +1,36 @@
 import React from "react";
+import momentjs from "moment";
+import { useDispatch } from "react-redux";
+import { activeNote } from "../../actions/notes";
+export const JournaEntries = ({ id, date, title, body, url }) => {
 
-export const JournaEntries = () => {
+  const dispatch = useDispatch();
+
+  const noteDate = momentjs(date);
+
+  const handleEntryClick = () => {
+  
+    dispatch(activeNote(id, { date, title, body, url }));
+  };
+
   return (
-    <div className="journal__entry pointer">
-      <div
-        className="journal__entry-picture"
-        style={{
-          backgroundSize: "cover",
-          backgroundImage:
-            "url(https://www.w3schools.com/w3css/img_lights.jpg)",
-        }}
-      ></div>
+    <div className="journal__entry pointer" onClick={() => handleEntryClick()}>
+      {url && (
+        <div
+          className="journal__entry-picture"
+          style={{
+            backgroundSize: "cover",
+            backgroundImage: `url(${url})`,
+          }}
+        ></div>
+      )}
       <div className="journal__entry-body">
-          <p className="journal__entry-title">titulo</p>
-          <p className="journal__entry-text">Culpa minim et Lorem ex esse amet commodo Lorem anim.</p>
+        <p className="journal__entry-title">{title}</p>
+        <p className="journal__entry-text">{body}</p>
       </div>
-      <div className='journal__entry-date'>
-          <span>Monday</span>
-          <h4>14</h4>
+      <div className="journal__entry-date">
+        <span>{noteDate.format("dddd")}</span>
+        <h4>{noteDate.format("Do")}</h4>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, startLogout } from "../../actions/auth";
+import { startNewNotes } from "../../actions/notes";
 import { SidebarEntry } from "./SidebarEntry";
 
 export const Sidebar = () => {
@@ -10,6 +11,9 @@ export const Sidebar = () => {
     dispatch(startLogout());
   };
 
+  const handleNew = () => {
+    dispatch(startNewNotes());
+  };
   return (
     <aside className="journal__sidebar">
       <div className="journal__sidebar-navbar">
@@ -22,7 +26,7 @@ export const Sidebar = () => {
         </button>
       </div>
 
-      <div className="journal__new-entry">
+      <div className="journal__new-entry" onClick={handleNew}>
         <i className="bx bx-calendar-plus bx-md"></i>
         <p className="mt-2">New Entry</p>
       </div>
