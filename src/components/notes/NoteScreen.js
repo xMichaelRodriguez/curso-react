@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { activeNote } from "../../actions/notes";
 import { useForm } from "../../hooks/useForm";
 import { NoteAppBar } from "./NoteAppBar";
 
@@ -16,6 +17,12 @@ export const NoteScreen = () => {
       activeId.current = note.id;
     }
   }, [note, reset]);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(activeNote(formValues.id, { ...formValues }));
+  }, [formValues, dispatch]);
+
   return (
     <div className="note__main-content">
       <NoteAppBar />
@@ -40,10 +47,7 @@ export const NoteScreen = () => {
 
         {note.url && (
           <div className="note__image">
-            <img
-              src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
-              alt="image"
-            />
+            <img src={note.url} alt="image" />
           </div>
         )}
       </div>
