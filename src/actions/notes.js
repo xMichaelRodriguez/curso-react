@@ -19,6 +19,7 @@ export const startNewNotes = () => {
       .add(newNotes);
 
     dispatch(activeNote(doc.id, newNotes));
+    dispatch(addNewNote(doc.id, newNotes));
   };
 };
 
@@ -28,6 +29,11 @@ export const activeNote = (id, note) => ({
     id,
     ...note,
   },
+});
+
+export const addNewNote = (id, note) => ({
+  type: types.notesAddNew,
+  payload: { id, ...note },
 });
 
 export const startNotesLoading = (uid) => {
@@ -50,9 +56,12 @@ export const SaveNote = (note) => {
     }
 
     const noteToFirestore = { ...note };
+
     delete noteToFirestore.id;
 
-    await fireStoreDB.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore);
+    await fireStoreDB
+      .doc(`${uid}/journal/notes/${note.id}`)
+      .update(noteToFirestore);
 
     dispatch(refreshNote(note.id, noteToFirestore));
     Swal.fire("Saved", note.title, "success");
@@ -92,3 +101,24 @@ export const startAsyncUploading = (file) => {
     Swal.close();
   };
 };
+
+export const startingdeleteItem = (id) => {
+  return async (dispatch, getState) => {
+    const { uid } = getState().auth;
+
+    await fireStoreDB.doc(`${uid}/journal/notes/${id}`).delete();
+
+    dispatch(deleteNote(id));
+
+    Swal.fire("Delete", "Deleted Note", "success");
+  };
+};
+
+export const deleteNote = (id) => ({
+  type: types.notesDeleted,
+  payload: id,
+});
+
+export const notesLogout = () => ({
+  type: types.notesLogoutCleaning,
+});

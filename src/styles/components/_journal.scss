@@ -52,6 +52,7 @@
   border-radius: 3px;
   color: $dark-grey;
   display: flex;
+  justify-content: space-between;
   margin-bottom: 10px;
   overflow: hidden;
 }
@@ -82,4 +83,3 @@
 .journal__entry-date span {
   font-size: 9px;
 }
-

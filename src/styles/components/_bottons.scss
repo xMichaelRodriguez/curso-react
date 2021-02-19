@@ -28,6 +28,22 @@
   }
 }
 
+
+
+.btn-danger {
+  background-color: red;
+  border-radius: 2px;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+
+  &:disabled {
+    background-color: lighten($color: $primary, $amount: 15);
+  }
+  &:hover {
+    background-color: darken($color: red, $amount: 12);
+    box-shadow: 0 0 6px 1px red;
+  }
+}
+
 .btn-block {
   width: 100%;
 }

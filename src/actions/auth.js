@@ -1,11 +1,11 @@
 import Swal from "sweetalert2";
 import { firebaseAuth, googleAuthProvider } from "../firebase/firebaseConfig";
 import { types } from "../types/types";
+import { notesLogout } from "./notes";
 import { finishLoading, StartLoading } from "./ui";
 
 export const startLoginEmailAndPassword = (email, password) => {
   return (dispatch) => {
-
     dispatch(StartLoading());
 
     firebaseAuth
@@ -14,9 +14,7 @@ export const startLoginEmailAndPassword = (email, password) => {
         dispatch(login(user.uid, user.displayName));
         dispatch(finishLoading());
       })
-      .catch((error) => 
-      {
-
+      .catch((error) => {
         dispatch(finishLoading());
         Swal.fire({
           title: "Error!",
@@ -34,7 +32,6 @@ export const startRegisterWithEmailPasswordAndName = (
   name
 ) => {
   return (dispatch) => {
-
     firebaseAuth
       .createUserWithEmailAndPassword(email, password)
       .then(async ({ user }) => {
@@ -45,7 +42,6 @@ export const startRegisterWithEmailPasswordAndName = (
         dispatch(login(user.uid, user.displayName));
       })
       .catch((error) => {
-
         Swal.fire({
           title: "Error",
           text: error.message,
@@ -56,17 +52,13 @@ export const startRegisterWithEmailPasswordAndName = (
 };
 
 export const startGoogleLogin = () => {
-
-
   return (dispatch) => {
-
     firebaseAuth
       .signInWithPopup(googleAuthProvider)
       .then(({ user }) => {
         dispatch(login(user.uid, user.displayName));
       })
       .catch((err) => {
-        
         console.log(err);
       });
   };
@@ -84,6 +76,7 @@ export const startLogout = () => {
   return async (dispatch) => {
     await firebaseAuth.signOut();
     dispatch(logout());
+    dispatch(notesLogout());
   };
 };
 
