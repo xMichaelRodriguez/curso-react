@@ -6,6 +6,7 @@ import moment from "moment";
 import "moment/locale/es";
 import { NavbarScreen } from "../ui/NavbarScreen";
 import { CalendarEvent } from "./CalendarEvent";
+import { CalendarModal } from "./CalendarModal";
 
 moment.locale("es");
 const localizer = momentLocalizer(moment); // or globalizeLocalizer
@@ -25,8 +26,10 @@ const events = [
 ];
 
 export const CalendarScreen = () => {
-  const [lastView, setlastView] = useState(localStorage.getItem('lastView')||'month')
-  
+  const [lastView, setlastView] = useState(
+    localStorage.getItem("lastView") || "month"
+  );
+
   const eventStyleGetters = (event, start, end, isSelected) => {
     const styles = {
       backgroundColor: "#367CF7",
@@ -47,8 +50,8 @@ export const CalendarScreen = () => {
     console.log(e);
   };
   const onViewChange = (e) => {
-    localStorage.setItem("lastView",e);
-    setlastView(e)
+    localStorage.setItem("lastView", e);
+    setlastView(e);
   };
   return (
     <div className="calendar-screen mb-2">
@@ -68,6 +71,7 @@ export const CalendarScreen = () => {
           onSelectEvent={onSelectEvent}
         />
       </div>
+      <CalendarModal />
     </div>
   );
 };
