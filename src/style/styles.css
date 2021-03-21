@@ -75,3 +75,12 @@ body {
   position: fixed;
   right: 25px;
 }
+
+.fab-denger {
+  bottom: 25px;
+  padding: 10x;
+  position: fixed;
+  left: 25px;
+  cursor: pointer;
+  
+}
