@@ -1,12 +1,13 @@
 import React from "react";
 
-export const NavbarScreen = () => {
+export const Navbar = () => {
   return (
     <div className="navbar navbar-dark bg-dark mb-4">
-      <span className="navbar-brand">PEDRUSCA</span>
+      <span className="navbar-brand">Pedro</span>
 
       <button className="btn btn-outline-light">
-        <em className="fas fa-sign-out-alt"></em> <span>Salir</span>
+        <i className="fas fa-sign-out-alt"></i>
+        <span> Salir</span>
       </button>
     </div>
   );

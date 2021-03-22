@@ -1,46 +1,32 @@
 import React, { useState } from "react";
-import { messages } from "../../helpers/messges";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import { Calendar as BigCalendar, momentLocalizer } from "react-big-calendar";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import "moment/locale/es";
-import { NavbarScreen } from "../ui/NavbarScreen";
+
+import { Navbar } from "../ui/Navbar";
+import { messages } from "../../helpers/calendar-messages-es";
 import { CalendarEvent } from "./CalendarEvent";
 import { CalendarModal } from "./CalendarModal";
-import { useDispatch, useSelector } from "react-redux";
+
 import { uiOpenModal } from "../../actions/ui";
-import {
-  eventClearActiveEvent,
-  eventSetActive,
-} from "../../actions/eventsCalendar";
+
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import "moment/locale/es";
+import { eventSetActive, eventClearActiveEvent } from "../../actions/events";
 import { AddNewFab } from "../ui/AddNewFab";
 import { DeleteEventFab } from "../ui/DeleteEventFab";
 
 moment.locale("es");
-const localizer = momentLocalizer(moment); // or globalizeLocalizer
+
+const localizer = momentLocalizer(moment);
 
 export const CalendarScreen = () => {
   const dispatch = useDispatch();
-
   const { events, activeEvent } = useSelector((state) => state.calendar);
-  console.log(events);
+
   const [lastView, setLastView] = useState(
     localStorage.getItem("lastView") || "month"
   );
-
-  const eventStyleGetters = (events, startDate, endDate, isSelected) => {
-    const style = {
-      backgroundColor: "#367CF7",
-      borderRadius: "0px",
-      opacity: 0.8,
-      display: "block",
-      color: "white",
-    };
-
-    return {
-      style,
-    };
-  };
 
   const onDoubleClick = (e) => {
     // console.log(e);
@@ -60,31 +46,47 @@ export const CalendarScreen = () => {
     // console.log(e)
     dispatch(eventClearActiveEvent());
   };
-  return (
-    <div className="container-fluid">
-      <div className="calendar-screen mb-2">
-        <NavbarScreen />
 
-        <BigCalendar
-          localizer={localizer}
-          events={events}
-          startAccessor="start"
-          endAccessor="end"
-          messages={messages}
-          eventPropGetter={eventStyleGetters}
-          onDoubleClickEvent={onDoubleClick}
-          onSelectEvent={onSelectEvent}
-          onView={onViewChange}
-          onSelectSlot={onSelectSlot}
-          selectable={true}
-          view={lastView}
-          components={{
-            event: CalendarEvent,
-          }}
-        />
-        <AddNewFab />
-        {activeEvent && <DeleteEventFab />}
-      </div>
+  const eventStyleGetter = (event, start, end, isSelected) => {
+    const style = {
+      backgroundColor: "#367CF7",
+      borderRadius: "0px",
+      opacity: 0.8,
+      display: "block",
+      color: "white",
+    };
+
+    return {
+      style,
+    };
+  };
+
+  return (
+    <div className="calendar-screen">
+      <Navbar />
+
+      <Calendar
+        localizer={localizer}
+        events={events}
+        startAccessor="start"
+        endAccessor="end"
+        messages={messages}
+        eventPropGetter={eventStyleGetter}
+        onDoubleClickEvent={onDoubleClick}
+        onSelectEvent={onSelectEvent}
+        onView={onViewChange}
+        onSelectSlot={onSelectSlot}
+        selectable={true}
+        view={lastView}
+        components={{
+          event: CalendarEvent,
+        }}
+      />
+
+      <AddNewFab />
+
+      {activeEvent && <DeleteEventFab />}
+
       <CalendarModal />
     </div>
   );

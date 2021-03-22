@@ -1,5 +1,6 @@
 import React from "react";
-import "../../style/login.css";
+import "./login.css";
+
 export const LoginScreen = () => {
   return (
     <div className="container login-container">

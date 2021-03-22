@@ -1,9 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { CalendarApp } from "./CalendarApp";
-import "./style/styles.css";
-ReactDOM.render(
-  <CalendarApp />,
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { CalendarApp } from './CalendarApp';
 
-  document.getElementById("root")
+import './styles.css';
+
+ReactDOM.render(
+    <CalendarApp />,
+  document.getElementById('root')
 );
