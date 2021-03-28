@@ -1,5 +1,9 @@
+body,html {
+  padding: 0px;
+  overflow-y: auto;
+}
 .login-container {
-  margin-top: 15%;
+  margin-top: 5%;
 }
 .login-form-1 {
   border-radius: 5px;
