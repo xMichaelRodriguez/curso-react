@@ -1,11 +1,12 @@
 import Swal from "sweetalert2";
 import { fetchAsync, fetchSync } from "../helpers/fetch";
 import { types } from "../types/types";
+import { eventLogout } from "./events";
 
 export const startLogin = (email, password) => {
   return async (dispatch) => {
     Swal.fire({
-      title: "Cargando...",
+      title: "Iniciando Sesion...",
       text: "Por favor espere...",
       allowOutsideClick: false,
       allowEnterKey: false,
@@ -92,6 +93,9 @@ const login = (user) => ({
 export const startLogout = () => {
   return (dispatch) => {
     localStorage.clear();
+
+    dispatch(eventLogout());
+
     dispatch(logout());
   };
 };
