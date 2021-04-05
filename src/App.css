@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.container-fluid {
+  height: 100%;
+  padding-top: 1%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.form-row .col-md-12 .container {
+  height: 80vh;
+}
+
+.container {
+  max-height: 70vh;
+  overflow: auto;
+}
