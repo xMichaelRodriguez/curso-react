@@ -8,13 +8,16 @@ import { fetchAsync } from "../helpers/querys";
 export const NewFileScreen = () => {
   const [FormValue, setFormValue] = useState("");
   const [Loading, setLoading] = useState(false);
-
+  const [Image, setImage] = useState("");
   const handleInputChange = (e) => {
     e.preventDefault();
-
-    setFormValue(e.target.files[0]);
+    const formulario = new FormData();
+    if (e.target.files[0]) {
+      formulario.append("image", e.target.files[0]);
+      setFormValue(formulario);
+    }
   };
-
+  let secure_url;
   const handleUpload = async () => {
     if (FormValue.length <= 0) {
       alert("Selecciona una imagen");
@@ -22,10 +25,12 @@ export const NewFileScreen = () => {
       setLoading(true);
 
       const resp = await fetchAsync("newFile", FormValue, "POST");
-      const body = await resp.json();
-      console.log(body);
+
+      const urlImage = resp.data.msg.split("Image:");
+      secure_url = urlImage[1];
+      console.log(secure_url);
+      setImage(secure_url);
       setLoading(false);
-      alert("imagen subida", body);
     }
   };
   return (
@@ -47,6 +52,7 @@ export const NewFileScreen = () => {
                     className="form-control"
                     type="file"
                     name="image"
+                    id="images"
                     onChange={handleInputChange}
                   />
                 </div>
@@ -81,8 +87,9 @@ export const NewFileScreen = () => {
                 <input
                   className="form-control"
                   type="file"
+                  id="image"
                   name="image"
-                  accept="image/jpg,.jpeg,.png"
+                  accept="image/jpg,.jpeg,.png,.jpg"
                   onChange={handleInputChange}
                 />
               </div>
@@ -100,8 +107,14 @@ export const NewFileScreen = () => {
               </button>
             </div>
           </form>
+          <br />
+          <br />
         </div>
       )}
+
+      <div className="card">
+        <div className="card-body">{Image !== "" && <img src={Image} />}</div>
+      </div>
     </div>
   );
 };
