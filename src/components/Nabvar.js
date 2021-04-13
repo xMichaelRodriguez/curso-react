@@ -5,22 +5,17 @@ export const Nabvar = () => {
     <div>
       <nav className="navbar navbar-light bg-dark">
         <div className="container-fluid d-flex justify-content-center">
-          <form className="d-flex w-75">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-light" type="button">
-              <box-icon
-                name="search"
-                type="solid"
-                animation="tada"
-                color="#9999"
-              ></box-icon>
+          <div class="input-group d-flex justify-content-center">
+            <div class="form-outline w-75">
+              <input type="search" id="form1" class="form-control text-light" />
+              <label class="form-label text-light" for="form1">
+                Search
+              </label>
+            </div>
+            <button type="button" class="btn btn-primary">
+              <box-icon name="search" type="solid" color="#9999"></box-icon>
             </button>
-          </form>
+          </div>
         </div>
       </nav>
     </div>

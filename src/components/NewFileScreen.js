@@ -26,8 +26,8 @@ export const NewFileScreen = () => {
 
       const resp = await fetchAsync("newFile", FormValue, "POST");
 
-      const urlImage = resp.data.msg.split("Image:");
-      secure_url = urlImage[1];
+      const urlImage = resp.data.msg;
+      secure_url = urlImage;
       console.log(secure_url);
       setImage(secure_url);
       setLoading(false);
@@ -113,7 +113,17 @@ export const NewFileScreen = () => {
       )}
 
       <div className="card">
-        <div className="card-body">{Image !== "" && <img src={Image} />}</div>
+        <div className="card-body">
+          {Image !== "" && (
+            <div class="text-center">
+              <img
+                src={Image}
+                class="rounded img-thumbnail shadow-2-strong"
+                alt="image"
+              />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
