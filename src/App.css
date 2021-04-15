@@ -1,6 +1,7 @@
+@import url("./styles/bootstrap.min.css");
 body,
 html {
-  background-color: #282c34;
+  background-color: #4d4a4a;
   padding: 0px;
   margin: 0px;
 }

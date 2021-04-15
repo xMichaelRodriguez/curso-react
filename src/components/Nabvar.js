@@ -5,16 +5,17 @@ export const Nabvar = () => {
     <div>
       <nav className="navbar navbar-light bg-dark">
         <div className="container-fluid d-flex justify-content-center">
-          <div class="input-group d-flex justify-content-center">
-            <div class="form-outline w-75">
-              <input type="search" id="form1" class="form-control text-light" />
-              <label class="form-label text-light" for="form1">
-                Search
-              </label>
-            </div>
-            <button type="button" class="btn btn-primary">
-              <box-icon name="search" type="solid" color="#9999"></box-icon>
-            </button>
+          <div className="input-group ">
+            <form className="form-inline my-2 my-md-0 w-100 d-flex justify-content-center">
+              <input
+                className="form-control mr-sm-2 w-75"
+                type="text"
+                placeholder="Search"
+              />
+              <button className="btn btn-secondary my-2 my-sm-0" type="button">
+              <box-icon name='search' ></box-icon>
+              </button>
+            </form>
           </div>
         </div>
       </nav>
