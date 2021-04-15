@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchAsync } from "../helpers/querys";
+import { startImageLoading } from "../actions/images";
 import { ImageSchreen } from "./ImageSchreen";
 
 export const HomeScreen = () => {
-  const [Images, setImages] = useState("");
-
+  const dispatch = useDispatch();
+  const imagesStore = useSelector((state) => state.images);
   useEffect(() => {
-    const petcioon = async () => {
-      const imagenes = await fetchAsync("");
-      const resp = await imagenes.json();
-
-      setImages(resp.photo);
-    };
-    petcioon();
-  }, []);
+    dispatch(startImageLoading(imagesStore));
+  }, [dispatch]);
 
   return (
     <>
@@ -32,8 +27,8 @@ export const HomeScreen = () => {
 
       <div className="row">
         <div className="card-columns">
-          {Images !== "" &&
-            Images.map(({ image, id }) => (
+          {imagesStore !== "" &&
+            imagesStore.map(({ image, id }) => (
               <ImageSchreen image={image} id={id} />
             ))}
         </div>

@@ -1,11 +1,15 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { uiOpenModal } from "../actions/uiActions";
+import { ModalSchreen } from "./ModalScreen";
 export const ImageSchreen = ({ image, id }) => {
+  const dispatch = useDispatch();
+
   const handleImageClick = () => {
-    console.log(image, id);
+    dispatch(uiOpenModal());
   };
   return (
-    <div>
+    <>
       <div className="card shadow text-white">
         <img
           className="card-img-top"
@@ -15,6 +19,8 @@ export const ImageSchreen = ({ image, id }) => {
           alt="index"
         ></img>
       </div>
-    </div>
+
+      <ModalSchreen item={id} />
+    </>
   );
 };
