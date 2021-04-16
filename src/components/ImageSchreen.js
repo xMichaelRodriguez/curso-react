@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { uiOpenModal } from "../actions/uiActions";
 import { ModalSchreen } from "./ModalScreen";
@@ -16,7 +16,7 @@ export const ImageSchreen = ({ image, id }) => {
           onDoubleClick={handleImageClick}
           src={image}
           key={id}
-          alt="index"
+          alt="...."
         ></img>
       </div>
 

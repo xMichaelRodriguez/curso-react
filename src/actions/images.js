@@ -4,7 +4,7 @@ import { types } from "../types/types";
 export const startImageLoading = () => {
   return async (dispatch) => {
     try {
-      const resp = await fetchAsync("");
+      const resp = await fetchAsync("",{},'GET');
 
       const images = resp.data;
       dispatch(imagesLoaded(images.photo));

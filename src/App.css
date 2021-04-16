@@ -7,7 +7,7 @@ html {
 }
 
 /* Modal */
-.ReactModalPortal > div{
+.ReactModalPortal > div {
   opacity: 0;
 }
 
@@ -15,7 +15,7 @@ html {
   align-items: center;
   display: flex;
   justify-content: center;
-  transition: opacity .2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
   z-index: 999;
 }
 
@@ -47,3 +47,21 @@ html {
   padding: 10px;
 }
 
+.info {
+  background-color: #9c27b0 linear-gradient(180deg, #ab47bc, #9c27b0) repeat-x;
+}
+
+
+/* FABS */
+.fabs {
+  border-radius: 100%;
+  bottom: 25px;
+  font-size: 30px;
+  padding: 25px;
+  position: fixed;
+  right: 25px;
+}
+
+.form-control::placeholder{
+  color: rgba(240, 248, 255, 0.678);
+}

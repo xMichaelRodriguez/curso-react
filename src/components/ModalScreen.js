@@ -5,7 +5,6 @@ import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import { startDeletedImage } from "../actions/images";
 import { uiCloseModal } from "../actions/uiActions";
-import { fetchAsync } from "../helpers/querys";
 
 const customStyles = {
   content: {

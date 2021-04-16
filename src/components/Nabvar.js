@@ -12,8 +12,8 @@ export const Nabvar = () => {
                 type="text"
                 placeholder="Search"
               />
-              <button className="btn btn-secondary my-2 my-sm-0" type="button">
-              <box-icon name='search' ></box-icon>
+              <button className="btn btn-secondary  rounded-circle my-2 my-sm-0" type="button" >
+              <i className="fas fa-search"></i>
               </button>
             </form>
           </div>

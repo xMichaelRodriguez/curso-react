@@ -2,10 +2,12 @@ import React, { useState } from "react";
 
 import LoadingMask from "react-loadingmask";
 import "react-loadingmask/dist/react-loadingmask.css";
+import { useHistory } from "react-router";
 
 import { fetchAsync } from "../helpers/querys";
 
 export const NewFileScreen = () => {
+  const history = useHistory();
   const [FormValue, setFormValue] = useState("");
   const [Loading, setLoading] = useState(false);
   const [Image, setImage] = useState("");
@@ -34,15 +36,20 @@ export const NewFileScreen = () => {
     }
   };
   return (
-    <div>
+    <>
       {Loading ? (
         <LoadingMask
-          style={{ backgroundColor: "#ffffff" }}
+          style={{ backgroundColor: "#ffffff", color: "#ffffff" }}
           loading={Loading}
-          text={"loading..."}
+          text={"Subiendo Imagen..."}
         >
           <div className="card bg-dark" style={{ height: 300 }}>
             <div className="card-header text-white    ">
+              <button className="btn btn-info">
+                <i className="fas fa-arrow-left"></i>
+                <span>Return</span>
+              </button>
+
               <h1>Uploading Image</h1>
             </div>
             <div className="card-body">
@@ -72,59 +79,76 @@ export const NewFileScreen = () => {
           </div>
         </LoadingMask>
       ) : (
-        <div className="card bg-dark" style={{ height: 300 }}>
-          <div className="card-header text-white    ">
-            <h1>Uploading Image</h1>
-          </div>
-          <form
-            id="form"
-            className="card-body"
-            onSubmit={handleUpload}
-            encType="multipart/form-data"
+        <>
+          <button
+            className="btn btn-info mb-2"
+            onClick={() => {
+              history.push("/home");
+            }}
           >
-            <div className="mb-3">
+            <i className="fas fa-arrow-left"></i>&nbsp;
+            <span>Return</span>
+          </button>
+          <div className="card bg-dark mb-3" style={{ height: 300 }}>
+            <div className="card-header text-white">
+              <h1>Uploading Image</h1>
+            </div>
+            <form
+              id="form"
+              className="card-body"
+              onSubmit={handleUpload}
+              encType="multipart/form-data"
+            >
               <div className="mb-3">
-                <input
-                  className="form-control"
-                  type="file"
-                  id="image"
-                  name="image"
-                  accept="image/jpg,.jpeg,.png,.jpg"
-                  onChange={handleInputChange}
-                />
+                <div className="mb-3">
+                  <input
+                    className="form-control"
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept="image/jpg,.jpeg,.png,.jpg"
+                    onChange={handleInputChange}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="d-grid gap-2 d-md-block">
-              <button type="submit" className="btn btn-primary fs-2">
-                <box-icon
-                  name="cloud-upload"
-                  type="solid"
-                  color="#fff"
-                  size="sm"
-                  pull="left"
-                ></box-icon>
-                <span> Upload</span>
-              </button>
-            </div>
-          </form>
-          <br />
-          <br />
-        </div>
+              <div className="d-grid gap-2 d-md-block">
+                <button type="submit" className="btn btn-primary fs-2">
+                  <box-icon
+                    name="cloud-upload"
+                    type="solid"
+                    color="#fff"
+                    size="sm"
+                    pull="left"
+                  ></box-icon>
+                  <span> Upload</span>
+                </button>
+              </div>
+            </form>
+          </div>
+          vv
+        </>
       )}
 
-      <div className="card">
-        <div className="card-body">
+      <div
+        className="card p-0"
+        style={{
+          width: "50%",
+          height: "50%",
+          display: `${Image ? "block" : "none"}`,
+        }}
+      >
+        <div className="card-img-top">
           {Image !== "" && (
-            <div class="text-center">
+            <div className="text-center">
               <img
                 src={Image}
-                class="rounded img-thumbnail shadow-2-strong"
-                alt="image"
+                className="rounded img-thumbnail shadow-2-strong"
+                alt="+++o"
               />
             </div>
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
