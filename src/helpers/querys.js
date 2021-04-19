@@ -8,7 +8,10 @@ export const fetchAsync = async (endPoint, data, method = "GET") => {
     return axios.get(baseUrl);
   } else if (method === "POST") {
     return axios.post(url, data, {
-      headers: { ContentType: "multipart/form-data" },
+      headers: {
+        accept: "application/json",
+        ContentType: "multipart/form-data",
+      },
     });
   } else if (method === "DELETE") {
     return axios.delete(url);

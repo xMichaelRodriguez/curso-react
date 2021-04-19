@@ -2,6 +2,7 @@ import { types } from "../types/types";
 
 const initialState = {
   modalOpen: false,
+  activeImage: null,
   images: [],
 };
 
@@ -27,6 +28,16 @@ export const uiReducer = (state = initialState, action) => {
       return {
         ...state,
         images: state.images.filter((e) => e.id !== state.images.id),
+      };
+    case types.SetActiveImage:
+      return {
+        ...state,
+        activeImage: action.payload,
+      };
+    case types.clearActiveImage:
+      return {
+        ...state,
+        activeImage: null,
       };
     default:
       return state;

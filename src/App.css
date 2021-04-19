@@ -1,7 +1,7 @@
 @import url("./styles/bootstrap.min.css");
 body,
 html {
-  background-color: #4d4a4a;
+  background-color: #1d2127;
   padding: 0px;
   margin: 0px;
 }
@@ -51,17 +51,23 @@ html {
   background-color: #9c27b0 linear-gradient(180deg, #ab47bc, #9c27b0) repeat-x;
 }
 
-
 /* FABS */
 .fabs {
   border-radius: 100%;
-  bottom: 25px;
-  font-size: 30px;
+  bottom: 10px;
+  font-size: 10px;
   padding: 25px;
   position: fixed;
   right: 25px;
 }
 
-.form-control::placeholder{
+.form-control::placeholder {
   color: rgba(240, 248, 255, 0.678);
+}
+
+.post {
+  background-color: #282c34;
+  margin-bottom: 15px;
+  padding: 5px 20px 5px 20px;
+  border-radius: 12px;
 }

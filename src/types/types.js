@@ -6,4 +6,6 @@ export const types = {
   // Images
   GetImages: "[IMG] Get images",
   DeleteImages: "[IMG] Delete images",
+  SetActiveImage: "[IMG] Set Active Image",
+  clearActiveImage: "[IMG] Clear Active Image",
 };

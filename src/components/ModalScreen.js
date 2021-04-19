@@ -21,11 +21,10 @@ const customStyles = {
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("#root");
 
-export const ModalSchreen = ({ item }) => {
+export const ModalSchreen = () => {
   const dispatch = useDispatch();
-  const [deleted, setsDeleted] = useState("");
   const [Loading, setLoading] = useState(false);
-
+  const [deleted, setDeleted] = useState("");
   const { modalOpen } = useSelector((state) => state);
   let subtitle;
 
@@ -40,13 +39,14 @@ export const ModalSchreen = ({ item }) => {
 
   const handleDelete = async () => {
     setLoading(true);
-    const resp = await dispatch(startDeletedImage(item));
+    const resp = await dispatch(startDeletedImage());
     if (resp.ok) {
-      setsDeleted(resp.msg);
+      setDeleted(resp.msg);
       closeModal();
     }
-  };
 
+    setLoading(false);
+  };
   return (
     <Modal
       isOpen={modalOpen}

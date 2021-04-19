@@ -11,11 +11,17 @@ export const NewFileScreen = () => {
   const [FormValue, setFormValue] = useState("");
   const [Loading, setLoading] = useState(false);
   const [Image, setImage] = useState("");
+
   const handleInputChange = (e) => {
     e.preventDefault();
     const formulario = new FormData();
-    if (e.target.files[0]) {
-      formulario.append("image", e.target.files[0]);
+    let archivos = e.target.files;
+
+    if (archivos) {
+      for (let file = 0; file <= archivos.length; file++) {
+        formulario.append("images", archivos[file]);
+      }
+
       setFormValue(formulario);
     }
   };
@@ -25,58 +31,65 @@ export const NewFileScreen = () => {
       alert("Selecciona una imagen");
     } else {
       setLoading(true);
-
+      console.log("formvalue", FormValue);
       const resp = await fetchAsync("newFile", FormValue, "POST");
-
+      console.log(resp);
       const urlImage = resp.data.msg;
       secure_url = urlImage;
-      console.log(secure_url);
-      setImage(secure_url);
+      await setImage(secure_url);
       setLoading(false);
     }
   };
+
   return (
     <>
       {Loading ? (
         <LoadingMask
-          style={{ backgroundColor: "#ffffff", color: "#ffffff" }}
+          style={{ backgroundColor: "#999999", heigth: "100%" }}
           loading={Loading}
-          text={"Subiendo Imagen..."}
+          text={"loading..."}
         >
-          <div className="card bg-dark" style={{ height: 300 }}>
-            <div className="card-header text-white    ">
-              <button className="btn btn-info">
-                <i className="fas fa-arrow-left"></i>
-                <span>Return</span>
-              </button>
-
-              <h1>Uploading Image</h1>
-            </div>
-            <div className="card-body">
-              <div className="mb-3">
-                <div className="mb-3">
-                  <input
-                    className="form-control"
-                    type="file"
-                    name="image"
-                    id="images"
-                    onChange={handleInputChange}
-                  />
-                </div>
+          <>
+            <button
+              className="btn btn-info mb-2"
+              onClick={() => {
+                history.push("/home");
+              }}
+            >
+              <i className="fas fa-arrow-left"></i>&nbsp;
+              <span>Return</span>
+            </button>
+            <div className="card bg-dark mb-3" style={{ height: 300 }}>
+              <div className="card-header text-white">
+                <h1>Uploading Image</h1>
               </div>
-              <div
-                className="btn btn-primary d-flex inline justify-content-center"
-                onClick={handleUpload}
+              <form
+                id="form"
+                className="card-body"
+                onSubmit={handleUpload}
+                encType="multipart/form-data"
               >
-                <box-icon
-                  name="cloud-upload"
-                  type="solid"
-                  color="#fff"
-                ></box-icon>
-                <span>Upload</span>
-              </div>
+                <div className="mb-3">
+                  <div className="mb-3">
+                    <input
+                      className="form-control"
+                      type="file"
+                      id="image"
+                      name="image"
+                      accept="image/jpg,.jpeg,.png,.jpg"
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+                <div className="d-grid gap-2 d-md-block">
+                  <button type="submit" className="btn btn-primary fs-2">
+                    <i className="fas fa-cloud-upload-alt"></i>
+                    <span> Upload</span>
+                  </button>
+                </div>
+              </form>
             </div>
-          </div>
+          </>
         </LoadingMask>
       ) : (
         <>
@@ -106,6 +119,7 @@ export const NewFileScreen = () => {
                     type="file"
                     id="image"
                     name="image"
+                    multiple
                     accept="image/jpg,.jpeg,.png,.jpg"
                     onChange={handleInputChange}
                   />
@@ -113,19 +127,12 @@ export const NewFileScreen = () => {
               </div>
               <div className="d-grid gap-2 d-md-block">
                 <button type="submit" className="btn btn-primary fs-2">
-                  <box-icon
-                    name="cloud-upload"
-                    type="solid"
-                    color="#fff"
-                    size="sm"
-                    pull="left"
-                  ></box-icon>
+                  <i className="fas fa-cloud-upload-alt"></i>
                   <span> Upload</span>
                 </button>
               </div>
             </form>
           </div>
-          vv
         </>
       )}
 
@@ -140,11 +147,13 @@ export const NewFileScreen = () => {
         <div className="card-img-top">
           {Image !== "" && (
             <div className="text-center">
-              <img
-                src={Image}
-                className="rounded img-thumbnail shadow-2-strong"
-                alt="+++o"
-              />
+              {Image.map((url) => (
+                <img
+                  src={url}
+                  className="rounded img-thumbnail shadow-2-strong"
+                  alt="+++o"
+                />
+              ))}
             </div>
           )}
         </div>
