@@ -1,18 +1,23 @@
 import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch, useLocation } from "react-router-dom";
 import { AboutScreen } from "../../components/about/AboutScreen";
 import { BlogScreen } from "../../components/blog/BlogScreen";
 import { ContactScreen } from "../../components/contact/ContactScreen";
 import { FooterScreen } from "../../components/footer/FooterScreen";
 import { HomeScreen } from "../../components/home/HomeScreen";
 import { NavbarScreen } from "../../components/ui/NavbarScreen";
-
+import background from "../../img/header.svg";
 export const Dashboard = () => {
+  const location = useLocation();
   return (
     <div className="text-justify">
       <header>
         <NavbarScreen />
+        {!location.pathname.includes("home") && (
+          <img src={background} className="img-fluid  offset" alt="" />
+        )}
       </header>
+
       <main className="container mb-3 push">
         <Switch>
           <Route path="/home" component={HomeScreen} />
