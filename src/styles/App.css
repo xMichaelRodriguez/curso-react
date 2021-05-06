@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  font-weight: 800;
+}
+h3 {
+  font-weight: 600;
+}
+.header-text {
+  margin-top: 60px;
+}
+
+.profile-section {
+  background-color: #fafafa;
+}
+
+.container {
+  padding-top: 20px;
+}
+
+.cover {
+  z-index: -1;
+}
+
+.primary {
+  background-color: #ff5300 !important;
+  color: #fff;
+  border-radius: 3px;
+  margin-right: 10px;
+  text-transform: capitalize;
+}
+
+.secondary {
+  background-color: none !important;
+  background: none !important;
+  border: solid 1px;
+  border-radius: 3px;
+  border-color: #ff5300 !important;
+  color: #ff5300;
+  margin-right: 10px;
+  text-transform: capitalize;
+}
+
+.secondary:hover {
+  background-color: #ff5300 !important;
+  color: #fafafa;
+  box-shadow: none;
+}
+.offset {
+  margin-top: -80px !important;
+}
+
+.primar-color-username {
+  color: #ff5300;
+  font-weight: 500;
+}
+.post-item-left-bar {
+  position: absolute;
+  left: 1px;
+  height: 45px;
+  width: 3px;
+  background-color: #ff5300;
+}
+
+.push {
+  min-height: calc(60vh - 100px);
+}
+
+.text-muted {
+  color: #c2c2c2 !important;
+}
+
+.primary-text {
+  color: #ff5300;
+}
+
+
+.wid{
+  max-height: 600px;
+ 
+}
