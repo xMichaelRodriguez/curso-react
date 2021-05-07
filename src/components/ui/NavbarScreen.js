@@ -1,12 +1,12 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { FaPaypal, FaUserCircle } from "react-icons/fa";
 export const NavbarScreen = () => {
   return (
     <nav className="navbar navbar-expand-md navbar-light  ">
-      <NavLink className="navbar-brand" to="/">
+      <Link className="navbar-brand" to="/">
         BLOG
-      </NavLink>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -20,48 +20,61 @@ export const NavbarScreen = () => {
       </button>
 
       <div className="collapse navbar-collapse" id="navbarhome">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <NavLink className="nav-link" to="/home">
-              Home
+        <ul className="navbar-nav m-auto">
+          <li className="nav-item ">
+            <NavLink
+              activeClassName="activee"
+              className="nav-link"
+              style={{ fontSize: "15px" }}
+              to="/home"
+            >
+              <span>Home</span>
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/about">
-              About
+            <NavLink
+              activeClassName="activee"
+              className="nav-link"
+              style={{ fontSize: "15px" }}
+              to="/about"
+            >
+              <span>About</span>
             </NavLink>
           </li>
 
           <li className="nav-item">
             <NavLink
-              className="nav-link "
+              activeClassName="activee"
+              className="nav-link text__color"
+              style={{ fontzzfontSize: "15px" }}
               to="/blog"
               tabIndex="-1"
               aria-disabled="true"
             >
-              Blog
+              <span> Blog</span>
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink
-              className="nav-link "
+              activeClassName="activee"
+              className={`nav-link `}
               to="/contact"
               tabIndex="-1"
               aria-disabled="true"
             >
-              Contact
+              <span>Contact</span>
             </NavLink>
           </li>
         </ul>
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <button className="btn primary btn-lg">
+            <Link to="/auth/" className="btn primary btn-lg">
               <FaUserCircle />
               <span> Login</span>
-            </button>
-            <button className="btn secondary btn-lg">
+            </Link>
+            <Link className="btn secondary btn-lg">
               <FaPaypal /> <span> Donate</span>
-            </button>
+            </Link>
           </li>
         </ul>
       </div>

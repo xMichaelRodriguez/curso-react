@@ -4,7 +4,7 @@ import { GrFacebookOption, GrInstagram } from "react-icons/gr";
 import { GoMarkGithub } from "react-icons/go";
 export const FooterScreen = () => {
   return (
-    <div className="footer bg-secondary">
+    <div className="container footer bg-secondary">
       <div className="row card-footer  bg-secondary">
         <div className="col-md-4 py-3">
           <h3>Michael Blog</h3>
@@ -18,21 +18,21 @@ export const FooterScreen = () => {
               className="btn secondary ml-2"
               style={{ borderRadius: "100%" }}
             >
-              <GrFacebookOption />
+              <GrFacebookOption  size="20px" />
             </button>
             <button
               type="button"
               className="btn secondary ml-2"
               style={{ borderRadius: "100%" }}
             >
-              <GrInstagram />
+              <GrInstagram size="20px" />
             </button>
             <button
               type="button"
               className="btn secondary ml-2"
               style={{ borderRadius: "100%" }}
             >
-              <GoMarkGithub />
+              <GoMarkGithub size="20px" />
             </button>
           </div>
         </div>
@@ -52,9 +52,10 @@ export const FooterScreen = () => {
               style={{ border: "none", fontSize: "12px" }}
             >
               <NavLink
+                activeClassName="activee"
                 className="text-dark"
                 style={{ textDecoration: "none" }}
-                to="/homee"
+                to="/home"
               >
                 Home
               </NavLink>
@@ -64,6 +65,7 @@ export const FooterScreen = () => {
               style={{ border: "none", fontSize: "12px" }}
             >
               <NavLink
+                activeClassName="activee"
                 className="text-dark"
                 style={{ textDecoration: "none" }}
                 to="/about"
@@ -76,6 +78,7 @@ export const FooterScreen = () => {
               style={{ border: "none", fontSize: "12px" }}
             >
               <NavLink
+                activeClassName="activee"
                 className="text-dark"
                 style={{ textDecoration: "none" }}
                 to="/blog"
@@ -88,6 +91,7 @@ export const FooterScreen = () => {
               style={{ border: "none", fontSize: "12px" }}
             >
               <NavLink
+                activeClassName="activee"
                 className="text-dark"
                 style={{ textDecoration: "none" }}
                 to="/contact"

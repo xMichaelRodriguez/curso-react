@@ -5,23 +5,22 @@ import { SectionSliderCards } from "../home/SectionSliderCards";
 export const AboutScreen = () => {
   return (
     <div>
-      <div className="cover d-flex justify-content-center">
-        <h1 style={{ marginTop: "-300px" }}>
-          <ins>About</ins>
-        </h1>
-        <nav
-          aria-label="breadcrumb"
-          style={{ marginTop: "-200px", marginLeft: "-110px" }}
-        >
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <Link to="/home">Home</Link>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">
-              About
-            </li>
-          </ol>
-        </nav>
+      <div className="cover d-flex w-100 justify-content-center">
+        <div style={{ marginTop: "-250px" }} className="ml-auto mr-auto">
+          <h1>
+            <ins>About</ins>
+          </h1>
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link to="/home">Home</Link>
+              </li>
+              <li className="breadcrumb-item active" aria-current="page">
+                About
+              </li>
+            </ol>
+          </nav>
+        </div>
       </div>
 
       <div>

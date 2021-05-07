@@ -14,7 +14,6 @@ export const SectionSliderCards = () => {
             className="wid  "
             visibleSlides={3}
             gutter="1rem"
-            slydeBy={2}
             ref={(_whirligigInstance) => {
               whirligig = _whirligigInstance;
             }}

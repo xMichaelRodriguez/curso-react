@@ -85,3 +85,24 @@ h3 {
 .breadcrumb {
   background-color: transparent;
 }
+
+.activee {
+  border-bottom: 3px solid #ff5300;
+  border-radius: 2px;
+}
+
+.text__color {
+  color: #ff5300;
+}
+
+.auth {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 350px;
+  padding: 20px;
+ 
+}
