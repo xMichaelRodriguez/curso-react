@@ -1,10 +1,20 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
-import { FaPaypal, FaUserCircle } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { NavLink, Link, useLocation, useHistory } from "react-router-dom";
+import { FaPaypal, FaPlus, FaUserCircle, FaSignOutAlt } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { startLogout } from "../../actions/authActions";
 export const NavbarScreen = () => {
+  const history = useHistory();
+  const location = useLocation();
+  const dispatch = useDispatch();
   const { name } = useSelector((state) => state.auth);
+  const handleLogout = () => {
+    dispatch(startLogout());
+  };
 
+  const handleNewPost = () => {
+    history.push('/blog/new-post')
+  };
   return (
     <nav className="navbar navbar-expand-md navbar-light  ">
       <Link className="navbar-brand" to="/">
@@ -85,7 +95,20 @@ export const NavbarScreen = () => {
                 <span>{` ${name.firstName} ${name.lastName}`}</span>
               </span>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <span className="dropdown-item text__color">New Post</span>
+                {location.pathname.includes("/blog") && (
+                  <span
+                    className="dropdown-item text__color"
+                    onClick={handleNewPost}
+                  >
+                    New Post <FaPlus />
+                  </span>
+                )}
+                <span
+                  className="dropdown-item text__color"
+                  onClick={handleLogout}
+                >
+                  Logout <FaSignOutAlt />
+                </span>
               </div>
             </li>
           ) : (
