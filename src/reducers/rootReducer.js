@@ -1,28 +1,8 @@
-import { types } from "../types/types";
+import { combineReducers } from "redux";
+import { authReducer } from "./authReducer";
+import { uiReducer } from "./uiReducer";
 
-const initialState = {
-  auth: {
-    checking: false,
-  },
-  post: {
-    activePost: null,
-    posts: [],
-  },
-  ui: {
-    setError: false,
-  },
-};
-
-export const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case types.loginStart:
-      return {
-        ...state,
-        /*  ...action.payload,
-        cheking: false, */
-      };
-
-    default:
-      return state;
-  }
-};
+export const rootReducer = combineReducers({
+  ui: uiReducer,
+  auth: authReducer,
+});

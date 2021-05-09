@@ -95,6 +95,12 @@ h3 {
   color: #ff5300;
 }
 
+.dropdown-item:hover {
+  color: #cb4504 !important;
+  cursor: pointer;
+}
+
+
 .auth {
   position: absolute;
   display: flex;
@@ -104,5 +110,8 @@ h3 {
   transform: translate(-50%, -50%);
   max-width: 350px;
   padding: 20px;
- 
+}
+
+.nav-link {
+  font-weight: 500 !important;
 }

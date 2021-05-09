@@ -11,12 +11,10 @@ export const Dashboard = () => {
   const location = useLocation();
   return (
     <div className="text-justify">
-      <header>
-        <NavbarScreen />
-        {!location.pathname.includes("home") && (
-          <img src={background} className="img-fluid  offset" alt="" />
-        )}
-      </header>
+      <NavbarScreen />
+      {!location.pathname.includes("home") && (
+        <img src={background} className="img-fluid  offset" alt="" />
+      )}
 
       <main className="container mb-3 push">
         <Switch>
