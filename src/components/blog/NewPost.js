@@ -1,12 +1,52 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FooterScreen } from "../footer/FooterScreen";
 import { NavbarScreen } from "../ui/NavbarScreen";
 import background from "../../img/header.svg";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import { FaPlusCircle } from "react-icons/fa";
+import { useForm } from "../../Hooks/useForm";
+import validator from "validator";
+import { removeError, setError } from "../../actions/uiActions";
+import { useDispatch, useSelector } from "react-redux";
+import { startpostsAddNew } from "../../actions/postEvents";
 export const NewPost = () => {
+  const titleRef = useRef(null);
+  const { msgError } = useSelector((state) => state.ui);
+
+  const dispatch = useDispatch();
   const location = useLocation();
+  const [formValue, handleInputChange, reset] = useForm({
+    title: "",
+    body: "",
+  });
+  const { title, body } = formValue;
+
+  const handleNewPost = (e) => {
+    e.preventDefault();
+
+    if (isFormValid()) {
+      dispatch(startpostsAddNew(formValue));
+      reset();
+      titleRef.current?.focus();
+    }
+  };
+  const isFormValid = () => {
+    if (validator.isEmpty(title.trim())) {
+      dispatch(setError("Title Is Required"));
+      return false;
+    }
+
+    if (!validator.isLength(body, { max: 1000, min: 100 })) {
+      dispatch(
+        setError("Body Needs Max: 1k characters And Min: 100 characters")
+      );
+      return false;
+    }
+
+    dispatch(removeError());
+
+    return true;
+  };
   return (
     <div className="text-justify">
       <NavbarScreen />
@@ -34,31 +74,57 @@ export const NewPost = () => {
         </div>
       </div>
       <main className="container mb-3 push ">
-        <form className="card offset position-relative p-4">
+        <form
+          className="card offset position-relative p-4"
+          onSubmit={handleNewPost}
+        >
           <div className="form-row d-flex justify-content-center ">
             <div className="col-md-12 ">
-              <div className="form-group">
-                <label className="font-weight-bold">Title</label>
+              <div
+                className={`form-group ${
+                  !!msgError && msgError.includes("Title") && "has-danger"
+                }`}
+              >
+                <label className="font-weight-bold" form="title">
+                  Title
+                </label>
                 <input
+                  id="title"
                   type="text"
-                  className="form-control"
+                  ref={titleRef}
+                  className={`form-control ${
+                    !!msgError && msgError.includes("Title") && "is-invalid"
+                  }`}
+                  name="title"
+                  value={title}
+                  onChange={handleInputChange}
                   placeholder="Deserunt adipisicing occaecat laboris laboris."
                 />
+                <div className="invalid-feedback">{msgError}</div>
               </div>
             </div>
             <div className="col-md-12">
-              <div className="form-group">
+              <div
+                className={`form-group ${
+                  !!msgError && msgError.includes("Body") && "has-danger"
+                }`}
+              >
                 <label className="font-weight-bold">Body</label>
                 <textarea
                   className="form-control"
                   rows="17"
+                  name="body"
+                  value={body}
+                  className={`form-control ${
+                    !!msgError && msgError.includes("Body") && "is-invalid"
+                  }`}
+                  onChange={handleInputChange}
                   placeholder="Deserunt adipisicing occaecat laboris laboris."
                 ></textarea>
+                <div className="invalid-feedback">{msgError}</div>
               </div>
             </div>
-            <div className="btn primary btn-block w-50">
-              Post <FaPlusCircle />
-            </div>
+            <button className="btn primary btn-block w-50">Publish</button>
           </div>
         </form>
       </main>

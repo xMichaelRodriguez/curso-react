@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { postStartLoading } from "../../actions/postEvents";
+import { PostItem } from "./PostItem";
 
+import postVoid from "../../img/undraw_void_3ggu.svg";
 export const BlogScreen = () => {
+  const dispatch = useDispatch();
+  const { posts } = useSelector((state) => state.post);
+
+  useEffect(async () => {
+    await dispatch(postStartLoading());
+  }, [dispatch]);
+
   return (
     <div>
       <div className="w-100 cover d-flex  justify-content-center">
@@ -9,7 +20,7 @@ export const BlogScreen = () => {
           <h1>
             <ins>Blog</ins>
           </h1>
-          <nav aria-label="breadcrumb" >
+          <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
                 <Link to="/home">Home</Link>
@@ -22,122 +33,22 @@ export const BlogScreen = () => {
         </div>
       </div>
 
+      {posts.length === 0 && (
+        <img src={postVoid} alt="postVoid" className="img-fluid" />
+      )}
+
       <div className="row ">
-        <div className="col-md-4 mb-3">
-          <div className="card" style={{ width: "18rem" }}>
-            <div
-              className="px-3 d-flex justify-content-between text-muted mb-3 p-3"
-              style={{ fontSize: "14px" }}
-            >
-              <div className="post-item-left-bar"></div>
-              <span className="primary-text">hola mundo</span>
-              <span>2021/05/05</span>
-            </div>
-            <div className="card-body ">
-              <h5 className="card-title">Ullamco id occaecat id sint.</h5>
-              <p className="card-text ">
-                Excepteur sit nulla adipisicing anim ex excepteur deserunt ex.
-                Cillum id id exercitation pariatur dolore non et magna proident
-                laboris ...
-              </p>
-            </div>
-            <div className="card-footer bg-secondary">
-              <button className="btn secondary ">Read More...</button>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4 mb-3">
-          <div className="card" style={{ width: "18rem" }}>
-            <div
-              className="px-3 d-flex justify-content-between text-muted mb-3 p-3"
-              style={{ fontSize: "14px" }}
-            >
-              <div className="post-item-left-bar"></div>
-              <span className="primary-text">hola mundo</span>
-              <span>2021/05/05</span>
-            </div>
-            <div className="card-body ">
-              <h5 className="card-title">Ullamco id occaecat id sint.</h5>
-              <p className="card-text ">
-                Excepteur sit nulla adipisicing anim ex excepteur deserunt ex.
-                Cillum id id exercitation pariatur dolore non et magna proident
-                laboris ...
-              </p>
-            </div>
-            <div className="card-footer bg-secondary">
-              <button className="btn secondary ">Read More...</button>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4 mb-3">
-          <div className="card" style={{ width: "18rem" }}>
-            <div
-              className="px-3 d-flex justify-content-between text-muted mb-3 p-3"
-              style={{ fontSize: "14px" }}
-            >
-              <div className="post-item-left-bar"></div>
-              <span className="primary-text">hola mundo</span>
-              <span>2021/05/05</span>
-            </div>
-            <div className="card-body ">
-              <h5 className="card-title">Ullamco id occaecat id sint.</h5>
-              <p className="card-text ">
-                Excepteur sit nulla adipisicing anim ex excepteur deserunt ex.
-                Cillum id id exercitation pariatur dolore non et magna proident
-                laboris ...
-              </p>
-            </div>
-            <div className="card-footer bg-secondary">
-              <button className="btn secondary ">Read More...</button>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4 mb-3">
-          <div className="card" style={{ width: "18rem" }}>
-            <div
-              className="px-3 d-flex justify-content-between text-muted mb-3 p-3"
-              style={{ fontSize: "14px" }}
-            >
-              <div className="post-item-left-bar"></div>
-              <span className="primary-text">hola mundo</span>
-              <span>2021/05/05</span>
-            </div>
-            <div className="card-body ">
-              <h5 className="card-title">Ullamco id occaecat id sint.</h5>
-              <p className="card-text ">
-                Excepteur sit nulla adipisicing anim ex excepteur deserunt ex.
-                Cillum id id exercitation pariatur dolore non et magna proident
-                laboris ...
-              </p>
-            </div>
-            <div className="card-footer bg-secondary">
-              <button className="btn secondary ">Read More...</button>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4 mb-3">
-          <div className="card" style={{ width: "18rem" }}>
-            <div
-              className="px-3 d-flex justify-content-between text-muted mb-3 p-3"
-              style={{ fontSize: "14px" }}
-            >
-              <div className="post-item-left-bar"></div>
-              <span className="primary-text">hola mundo</span>
-              <span>2021/05/05</span>
-            </div>
-            <div className="card-body ">
-              <h5 className="card-title">Ullamco id occaecat id sint.</h5>
-              <p className="card-text ">
-                Excepteur sit nulla adipisicing anim ex excepteur deserunt ex.
-                Cillum id id exercitation pariatur dolore non et magna proident
-                laboris ...
-              </p>
-            </div>
-            <div className="card-footer bg-secondary">
-              <button className="btn secondary ">Read More...</button>
-            </div>
-          </div>
-        </div>
+        {posts.map(({ title, body, id, first_name, last_name,created,modified }) => (
+          <PostItem
+            title={title}
+            body={body}
+            id={id}
+            user={`${first_name} ${last_name}`}
+            created={created}
+            modified={modified}
+            key={id}
+          />
+        ))}
       </div>
     </div>
   );

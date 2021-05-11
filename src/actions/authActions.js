@@ -1,6 +1,7 @@
 // import moment from "moment";
 import { fetchAsync, fetchSync } from "../helpers/fetching";
 import { types } from "../types/types";
+import { setError } from "./uiActions";
 export const startLogin = (email, password) => {
   return async (dispatch) => {
     const resp = await fetchSync("auth/login", { email, password }, "POST");
@@ -19,7 +20,7 @@ export const startLogin = (email, password) => {
         })
       );
     } else {
-      console.log(body.msg);
+      dispatch(setError(body.msg));
     }
   };
 };

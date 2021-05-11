@@ -9,21 +9,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { startLogin } from "../../actions/authActions";
 export const LoginScreen = () => {
   const history = useHistory();
- 
+
   const { msgError } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
   const [formValue, handleInputChange] = useForm({
     email: "scottlovos503@gmail.com",
-    password: "Password1",
+    password: "Password.1",
   });
 
   const { email, password } = formValue;
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     if (isFormValid()) {
-      await dispatch(startLogin(email, password));
+      dispatch(startLogin(email, password));
 
-      history.push("/");
+      if (!msgError.includes("Password") && msgError === "") {
+        history.push("/");
+      }
     }
   };
 
