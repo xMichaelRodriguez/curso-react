@@ -7,6 +7,11 @@ import { FooterScreen } from "../../components/footer/FooterScreen";
 import { HomeScreen } from "../../components/home/HomeScreen";
 import { NavbarScreen } from "../../components/ui/NavbarScreen";
 import background from "../../img/header.svg";
+
+import Chatbot from "react-chatbot-kit";
+import MessageParser from "../../helpers/chat/MessageParser";
+import ActionProvider from "../../helpers/chat/ActionProvider";
+import config from "../../helpers/chat/config";
 export const Dashboard = () => {
   const location = useLocation();
   return (
@@ -25,7 +30,13 @@ export const Dashboard = () => {
           <Redirect to="/home" />
         </Switch>
       </main>
-
+      <div className="chatBot ">
+        <Chatbot
+          config={config}
+          actionProvider={ActionProvider}
+          messageParser={MessageParser}
+        />
+      </div>
       <div className="container-fluid">
         <FooterScreen />
       </div>
