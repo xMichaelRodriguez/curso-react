@@ -1,8 +1,8 @@
-import { types } from "../types/types";
+import { types } from '../types/types';
 
 const initialState = {
-  uid: "",
-  name: "",
+  uid: '',
+  name: '',
   checking: true,
 };
 

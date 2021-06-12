@@ -1,14 +1,14 @@
-import React, { useRef } from "react";
-import { FooterScreen } from "../footer/FooterScreen";
-import { NavbarScreen } from "../ui/NavbarScreen";
-import background from "../../img/header.svg";
-import { useLocation } from "react-router";
-import { Link } from "react-router-dom";
-import { useForm } from "../../Hooks/useForm";
-import validator from "validator";
-import { removeError, setError } from "../../actions/uiActions";
-import { useDispatch, useSelector } from "react-redux";
-import { startpostsAddNew } from "../../actions/postEvents";
+import React, { useRef } from 'react';
+import { FooterScreen } from '../footer/FooterScreen';
+import { NavbarScreen } from '../ui/NavbarScreen';
+import background from '../../img/header.svg';
+import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
+import { useForm } from '../../Hooks/useForm';
+import validator from 'validator';
+import { removeError, setError } from '../../actions/uiActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { startpostsAddNew } from '../../actions/postEvents';
 export const NewPost = () => {
   const titleRef = useRef(null);
   const { msgError } = useSelector((state) => state.ui);
@@ -16,8 +16,8 @@ export const NewPost = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const [formValue, handleInputChange, reset] = useForm({
-    title: "",
-    body: "",
+    title: '',
+    body: '',
   });
   const { title, body } = formValue;
 
@@ -32,13 +32,13 @@ export const NewPost = () => {
   };
   const isFormValid = () => {
     if (validator.isEmpty(title.trim())) {
-      dispatch(setError("Title Is Required"));
+      dispatch(setError('Title Is Required'));
       return false;
     }
 
     if (!validator.isLength(body, { max: 1000, min: 100 })) {
       dispatch(
-        setError("Body Needs Max: 1k characters And Min: 100 characters")
+        setError('Body Needs Max: 1k characters And Min: 100 characters')
       );
       return false;
     }
@@ -48,87 +48,87 @@ export const NewPost = () => {
     return true;
   };
   return (
-    <div className="text-justify">
+    <div className='text-justify animate__animated animate__fadeIn'>
       <NavbarScreen />
-      {!location.pathname.includes("home") && (
-        <img src={background} className="img-fluid  offset" alt="" />
+      {!location.pathname.includes('home') && (
+        <img src={background} className='img-fluid  offset' alt='' />
       )}
-      <div className="cover d-flex w-100 justify-content-center">
-        <div style={{ marginTop: "-250px" }} className="ml-auto mr-auto">
-          <h1 className="text-center">
+      <div className='cover d-flex w-100 justify-content-center'>
+        <div style={{ marginTop: '-250px' }} className='ml-auto mr-auto'>
+          <h1 className='text-center'>
             <ins>New Post</ins>
           </h1>
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <Link to="/home">Home</Link>
+          <nav aria-label='breadcrumb'>
+            <ol className='breadcrumb'>
+              <li className='breadcrumb-item'>
+                <Link to='/home'>Home</Link>
               </li>
-              <li className="breadcrumb-item active" aria-current="page">
-                <Link to="/blog">Blog</Link>
+              <li className='breadcrumb-item active' aria-current='page'>
+                <Link to='/blog'>Blog</Link>
               </li>
-              <li className="breadcrumb-item active" aria-current="page">
+              <li className='breadcrumb-item active' aria-current='page'>
                 New-Post
               </li>
             </ol>
           </nav>
         </div>
       </div>
-      <main className="container mb-3 push ">
+      <main className='container mb-3 push '>
         <form
-          className="card offset position-relative p-4"
+          className='card offset position-relative p-4'
           onSubmit={handleNewPost}
         >
-          <div className="form-row d-flex justify-content-center ">
-            <div className="col-md-12 ">
+          <div className='form-row d-flex justify-content-center '>
+            <div className='col-md-12 '>
               <div
                 className={`form-group ${
-                  !!msgError && msgError.includes("Title") && "has-danger"
+                  !!msgError && msgError.includes('Title') && 'has-danger'
                 }`}
               >
-                <label className="font-weight-bold" form="title">
+                <label className='font-weight-bold' form='title'>
                   Title
                 </label>
                 <input
-                  id="title"
-                  type="text"
+                  id='title'
+                  type='text'
                   ref={titleRef}
                   className={`form-control ${
-                    !!msgError && msgError.includes("Title") && "is-invalid"
+                    !!msgError && msgError.includes('Title') && 'is-invalid'
                   }`}
-                  name="title"
+                  name='title'
                   value={title}
                   onChange={handleInputChange}
-                  placeholder="Deserunt adipisicing occaecat laboris laboris."
+                  placeholder='Deserunt adipisicing occaecat laboris laboris.'
                 />
-                <div className="invalid-feedback">{msgError}</div>
+                <div className='invalid-feedback'>{msgError}</div>
               </div>
             </div>
-            <div className="col-md-12">
+            <div className='col-md-12'>
               <div
                 className={`form-group ${
-                  !!msgError && msgError.includes("Body") && "has-danger"
+                  !!msgError && msgError.includes('Body') && 'has-danger'
                 }`}
               >
-                <label className="font-weight-bold">Body</label>
+                <label className='font-weight-bold'>Body</label>
                 <textarea
-                  className="form-control"
-                  rows="17"
-                  name="body"
+                  className='form-control'
+                  rows='17'
+                  name='body'
                   value={body}
                   className={`form-control ${
-                    !!msgError && msgError.includes("Body") && "is-invalid"
+                    !!msgError && msgError.includes('Body') && 'is-invalid'
                   }`}
                   onChange={handleInputChange}
-                  placeholder="Deserunt adipisicing occaecat laboris laboris."
+                  placeholder='Deserunt adipisicing occaecat laboris laboris.'
                 ></textarea>
-                <div className="invalid-feedback">{msgError}</div>
+                <div className='invalid-feedback'>{msgError}</div>
               </div>
             </div>
-            <button className="btn primary btn-block w-50">Publish</button>
+            <button className='btn primary btn-block w-50'>Publish</button>
           </div>
         </form>
       </main>
-      <div className="container-fluid">
+      <div className='container-fluid'>
         <FooterScreen />
       </div>
     </div>

@@ -1,21 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import profileImage from "../../img/profile.svg";
-import { SectionSliderCards } from "../home/SectionSliderCards";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import profileImage from '../../img/profile.svg';
+import { SectionSliderCards } from '../home/SectionSliderCards';
 export const AboutScreen = () => {
   return (
-    <div>
-      <div className="cover d-flex w-100 justify-content-center">
-        <div style={{ marginTop: "-250px" }} className="ml-auto mr-auto">
+    <div className='animate__animated animate__fadeIn'>
+      <div className='cover d-flex w-100 justify-content-center '>
+        <div style={{ marginTop: '-250px' }} className='ml-auto mr-auto'>
           <h1>
             <ins>About</ins>
           </h1>
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <Link to="/home">Home</Link>
+          <nav aria-label='breadcrumb'>
+            <ol className='breadcrumb'>
+              <li className='breadcrumb-item'>
+                <Link to='/home'>Home</Link>
               </li>
-              <li className="breadcrumb-item active" aria-current="page">
+              <li className='breadcrumb-item active' aria-current='page'>
                 About
               </li>
             </ol>
@@ -24,11 +24,11 @@ export const AboutScreen = () => {
       </div>
 
       <div>
-        <div className="row mt-3">
-          <div className="col-md-6  offset">
-            <img className="img-fluid" src={profileImage} alt="" />
+        <div className='row mt-3'>
+          <div className='col-md-6  offset'>
+            <img className='img-fluid' src={profileImage} alt='' />
           </div>
-          <div className="col-md-6">
+          <div className='col-md-6'>
             <h1>
               Hello There My Name is Michael Rodríguez And I Love To
               programing(Most Of The Time)
@@ -51,7 +51,7 @@ export const AboutScreen = () => {
         </div>
       </div>
 
-      <section className="container">
+      <section className='container'>
         <SectionSliderCards />
       </section>
     </div>

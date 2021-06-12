@@ -1,13 +1,13 @@
-import { fetchAsync, fetchSync } from "../helpers/fetching";
-import { preparePost } from "../helpers/preparePosts";
-import { types } from "../types/types";
-import { setError } from "./uiActions";
+import { fetchAsync, fetchSync } from '../helpers/fetching';
+import { preparePost } from '../helpers/preparePosts';
+import { types } from '../types/types';
+import { setError } from './uiActions';
 
 export const startpostsAddNew = (post) => {
   return async (dispatch, getState) => {
     const { uid, name } = getState().auth;
     try {
-      const resp = await fetchAsync("blog", post, "POST");
+      const resp = await fetchAsync('post', post, 'POST');
       const body = await resp.json();
 
       if (body.ok) {
@@ -94,11 +94,11 @@ export const postStartLoading = () => {
   return async (dispatch) => {
     try {
       let post = [];
-      const resp = await fetchSync("blog");
+      const resp = await fetchSync('post');
       const body = await resp.json();
 
       if (body.ok) {
-        post = await preparePost(body.posts);
+        post = await preparePost(body.post);
 
         dispatch(startpostsLoaded(post));
       } else {
