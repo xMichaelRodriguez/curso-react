@@ -24,7 +24,7 @@ export const SectionSliderCards = () => {
             }}
           >
             {posts.map((p) => (
-              <div className='m-2 shadow'>
+              <div className='m-2 shadow' key={p.id}>
                 <div className='card w-100  '>
                   <div
                     className=' row px-3 text-muted mb-3 p-3'
@@ -34,8 +34,10 @@ export const SectionSliderCards = () => {
                     <div className='col-md-6'>
                       <span className='primary-text'>{p.user_name}</span>
                     </div>
-                    <div className='col-md-6'>
-                      <span>{moment(p.created).calendar()}</span>
+                    <div className='col-md-6 '>
+                      <span className='float-right'>
+                        {moment(p.created).format('L')}
+                      </span>
                     </div>
                   </div>
                   <div className='card-body '>

@@ -3,7 +3,7 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 
-import { useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { fetchAsync } from '../../helpers/fetching';
 import { LoadingScreen } from '../ui/LoadingScreen';
 
@@ -24,20 +24,22 @@ export const PostView = () => {
         console.log(err);
       }
     })();
-    return () => {
-      '';
-    };
-  }, []);
+  }, [id]);
 
   return (
     <>
+      <div className='card-body'>
+        <Link class='card-link' onClick={() => history.goBack()}>
+          <FaChevronLeft /> Return
+        </Link>
+      </div>
       {post.length < 1 && <LoadingScreen />}
       <div className='container animate__animated animate__fadeIn'>
         <blockquote className='blockquote'>
           <h1 className='mb-1'>{post.title}</h1>
           <footer className='blockquote-footer'>
-            By:{post.user_name}{' '}
-            <cite title='Source Title'>{moment(post.created).calendar()}</cite>
+            By {post.user_name}
+            <cite title='Source Title'>{moment(post.created).format('L')}</cite>
           </footer>
         </blockquote>
         <div className='card-body'>
@@ -69,11 +71,6 @@ export const PostView = () => {
             </div>
           </div>
         </form>
-        <div className='card-body'>
-          <a href='#' class='card-link' onClick={() => history.goBack()}>
-            <FaChevronLeft /> Return
-          </a>
-        </div>
       </div>
     </>
   );

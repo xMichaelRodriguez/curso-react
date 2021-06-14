@@ -11,25 +11,27 @@ import background from '../../img/header.svg';
 
 export const Dashboard = () => {
   const location = useLocation();
-  return (
-    <div className="text-justify">
-      <NavbarScreen />
-      {!location.pathname.includes('home') && (
-        <img src={background} className="img-fluid  offset" alt="" />
-      )}
 
-      <main className="container mb-3 push">
+  return (
+    <div className='text-justify'>
+      <NavbarScreen />
+      {!(
+        location.pathname.includes('home') ||
+        location.pathname.includes('/blog/')
+      ) && <img src={background} className='img-fluid  offset' alt='' />}
+
+      <main className='container mb-3 push'>
         <Switch>
-          <Route path="/blog/:id" component={PostView} />
-          <Route path="/home" component={HomeScreen} />
-          <Route path="/about" component={AboutScreen} />
-          <Route path="/contact" component={ContactScreen} />
-          <Route path="/blog" component={BlogScreen} />
-          <Redirect to="/home" />
+          <Route path='/blog/:id' component={PostView} />
+          <Route path='/home' component={HomeScreen} />
+          <Route path='/about' component={AboutScreen} />
+          <Route path='/contact' component={ContactScreen} />
+          <Route path='/blog' component={BlogScreen} />
+          <Redirect to='/home' />
         </Switch>
       </main>
 
-      <div className="container-fluid">
+      <div className='container-fluid'>
         <FooterScreen />
       </div>
     </div>

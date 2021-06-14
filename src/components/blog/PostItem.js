@@ -1,7 +1,8 @@
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-export const PostItem = ({ title, body, id, user, created, modified }) => {
+export const PostItem = ({ title, body, id, user, created }) => {
   const history = useHistory();
   return (
     <div className='col-md-4 mb-3 animate__animated animate__fadeIn'>
@@ -9,11 +10,11 @@ export const PostItem = ({ title, body, id, user, created, modified }) => {
         <div className='px-3 text-muted mb-3 p-3' style={{ fontSize: '14px' }}>
           <div className='post-item-left-bar'></div>
           <div className=' row'>
-            <div className='col-md-6'>
-              <span className='primary-text'>By {user}</span>
-            </div>
-            <div className='col-md-6'>
-              <span>{created}</span>
+            <div className='col-md-12'>
+              <span className='primary-text'>By {user}</span>{' '}
+              <span className=''>{moment(created).format('L')}</span>
+              <br />
+              <small className='text-muted'>Voluptate do</small>
             </div>
           </div>
         </div>
@@ -46,4 +47,5 @@ PostItem.propTypes = {
   body: PropTypes.string,
   id: PropTypes.string,
   user: PropTypes.string,
+  created: PropTypes.string,
 };

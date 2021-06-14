@@ -1,7 +1,8 @@
-import { types } from "../types/types";
+import { types } from '../types/types';
 
 const initialState = {
   posts: [],
+  lastedPost: [],
   activePost: null,
 };
 
@@ -18,7 +19,11 @@ export const postsReducer = (state = initialState, action) => {
         ...state,
         posts: [...state.post, action.payload],
       };
-
+    case types.postStartLoading:
+      return {
+        ...state,
+        lastedPost: [...state.posts],
+      };
     case types.ClearActivePost:
       return {
         ...state,

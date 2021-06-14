@@ -7,7 +7,7 @@ export const startpostsAddNew = (post) => {
   return async (dispatch, getState) => {
     const { uid, name } = getState().auth;
     try {
-      const resp = await fetchAsync('post', post, 'POST');
+      const resp = await fetchAsync('post/new', post, 'POST');
       const body = await resp.json();
 
       if (body.ok) {
@@ -112,6 +112,29 @@ export const postStartLoading = () => {
 
 const startpostsLoaded = (posts) => ({
   type: types.PostLoaded,
+  payload: posts,
+});
+
+export const lastedPost = () => {
+  return async (dispatch) => {
+    try {
+      let post = [];
+      const resp = await fetchSync('post');
+      const body = await resp.json();
+      if (body.ok) {
+        post = await preparePost(body.post);
+        dispatch(loadedLastedPost(post));
+      } else {
+        alert(body.msg);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+const loadedLastedPost = (posts) => ({
+  type: types.postStartLoading,
   payload: posts,
 });
 

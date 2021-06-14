@@ -1,37 +1,37 @@
 const baseUrl = process.env.REACT_APP_API_URL;
 
-export const fetchSync = (endPoint, data, method = "GET") => {
-  const url = `${baseUrl}/${endPoint}`; //localhost:4000/api/...
+export const fetchSync = (endPoint, data, method = 'GET') => {
+  const url = `${baseUrl}${endPoint}`; //localhost:4000/api/...
 
-  if (method === "GET") {
+  if (method === 'GET') {
     return fetch(url);
   } else {
     return fetch(url, {
       method,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     });
   }
 };
 
-export const fetchAsync = (endPoint, data, method = "GET") => {
-  const url = `${baseUrl}/${endPoint}`; //localhost:4000/api...
-  console.log(url);
-  const token = localStorage.getItem("x-token") || "";
-  if (method === "GET") {
-    return fetch(url, {
+export const fetchAsync = (endPoint, data, method = 'GET') => {
+  const url = `${baseUrl}${endPoint}`; //localhost:4000/api...
+
+  const token = localStorage.getItem('x-token') || '';
+  if (method === 'GET') {
+    return fetch(`${url}`, {
       method,
       headers: {
         token: token,
       },
     });
   } else {
-    return fetch(url, {
+    return fetch(`${url}`, {
       method,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         token: token,
       },
       body: JSON.stringify(data),

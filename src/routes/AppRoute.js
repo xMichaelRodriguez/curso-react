@@ -4,6 +4,7 @@ import 'react-loadingmask/dist/react-loadingmask.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
 import { startChecking } from '../actions/authActions';
+import { lastedPost } from '../actions/postEvents';
 import { NewPost } from '../components/blog/NewPost';
 import { LoadingScreen } from '../components/ui/LoadingScreen';
 import { AuthRouter } from './auth/AuthRouter';
@@ -17,6 +18,7 @@ export const AppRoute = () => {
 
   useEffect(() => {
     dispatch(startChecking());
+    dispatch(lastedPost());
   }, [dispatch]);
 
   if (checking) {

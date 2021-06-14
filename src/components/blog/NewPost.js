@@ -89,7 +89,6 @@ export const NewPost = () => {
                   Title
                 </label>
                 <input
-                  id='title'
                   type='text'
                   ref={titleRef}
                   className={`form-control ${
