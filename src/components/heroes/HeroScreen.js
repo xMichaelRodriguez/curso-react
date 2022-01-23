@@ -4,7 +4,6 @@ import { getHeroById } from "../../selectors/getHeroById";
 
 export const HeroScreen = ({ history }) => {
   const { heroeId } = useParams();
-
   const hero = useMemo(() => getHeroById(heroeId), [heroeId]);
 
   if (!hero) {

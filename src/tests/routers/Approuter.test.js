@@ -38,7 +38,7 @@ describe('Test on component <AppRouter />', () => {
             </AuthContext.Provider>
         );
         
-       component.getByText('Asociaciones')  
+       component.getByText('Asociaciones')
        
   
     });

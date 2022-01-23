@@ -11,9 +11,7 @@ export const LoginScreen = ({ history }) => {
     dispatch({
       type: types.login,
       payload: {
-        id: new Date().getTime(),
         name: "Michael Rodriguez",
-        email: "scottlovos503@gmail.com",
       },
     });
 
