@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 
 import { AuthContext } from "../auth/AuthContext";
 import { PrivateRoutes } from "./PrivateRoutes";
@@ -10,7 +10,7 @@ import { DashboardRoutes } from "./DashboardRoutes";
 
 export const AppRouter = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  
   return (
     <Router>
       <div>
@@ -24,7 +24,7 @@ export const AppRouter = () => {
 
           <PrivateRoutes
             path="/"
-            render={DashboardRoutes}
+            component={DashboardRoutes}
             isAuthenticated={user.logged}
           />
         </Switch>

@@ -5,14 +5,14 @@ import { Redirect, Route } from "react-router-dom";
 
 export const PublicRoutes = ({
   isAuthenticated,
-  render: Component,
+  component: Component,
   ...rest
 }) => {
   return (
     <Route
       {...rest}
-      // render here!
-      render={(props) =>
+      // component here!
+      component={(props) =>
         !isAuthenticated ? <Component {...props} /> : <Redirect to="/" />
       }
     />
@@ -21,5 +21,5 @@ export const PublicRoutes = ({
 
 PublicRoutes.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-  render: PropTypes.func.isRequired,
+  component: PropTypes.func.isRequired,
 };

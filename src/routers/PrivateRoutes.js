@@ -5,15 +5,15 @@ import { Redirect, Route } from "react-router-dom";
 
 export const PrivateRoutes = ({
   isAuthenticated,
-  render: Component,
+  component: Component,
   ...rest
 }) => {
   localStorage.setItem('lastPath',rest.location.pathname)
   return (
     <Route
       {...rest}
-      // render here!
-      render={(props) =>
+      // component here!
+      component={(props) =>
         isAuthenticated ? (
           <Component {...props} />
         ) : (
@@ -26,5 +26,5 @@ export const PrivateRoutes = ({
 
 PrivateRoutes.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-  render: PropTypes.func.isRequired,
+  component: PropTypes.func.isRequired,
 };
